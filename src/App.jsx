@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Layout from './Layout'
 const App = () => {
   return (
-    <div className='bg-red-600'>
-      hello
+    <div className=''>
+      <Layout/>
     </div>
   )
 }
