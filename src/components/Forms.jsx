@@ -10,6 +10,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import Header from "./Header";
 const Forms = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -42,8 +43,7 @@ const Forms = () => {
               dispatch(addUser({
                 uid,email,displayName,photoURL
               }))
-              navigate("/browse");
-          console.log(user);
+          
           setErrMessage(null);
              
               
@@ -73,8 +73,7 @@ const Forms = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/browse");
-          console.log(user);
+        
           setErrMessage(null);
           // ...
         })
@@ -88,7 +87,9 @@ const Forms = () => {
     }
   };
   return (
-    <div className="relative flex  justify-center ">
+    <>
+    
+     <div className="relative flex  justify-center ">
       <div className="w-full h-full absolute bg-black opacity-40 "></div>
       <div className=" w-full bg-cover ">
         <img className=" h-[100vh] md:h-full  " src={netflixbg} alt="bg-logo" />
@@ -150,6 +151,8 @@ const Forms = () => {
         </form>
       </div>
     </div>
+    </>
+   
   );
 };
 

@@ -8,7 +8,7 @@ const Body = () => {
     <div className=''>
      
       <Header/>
-     <Outlet/>
+     <Forms/>
     </div>
   )
 }
