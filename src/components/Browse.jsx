@@ -8,6 +8,7 @@ import Header from "./Header";
 import { toggleGptSearch } from "../utils/gptSlice";
 import { useSelector } from "react-redux";
 import GptSearch from "./GptSearch";
+import Shimmer from "./Shimmer";
 const Browse = () => {
   const dispatch = useDispatch()
   const gpt = useSelector(store => store.gpt.showGptSearch)
@@ -43,14 +44,14 @@ const Browse = () => {
   useEffect(() => {
    !(nowPlayingMovies&&TrendingMovies&&PopularMovies) &&getNowPlayingMovies();
   }, []);
-  return <div>
+  return  PopularMovies? <div>
     <Header/>
     {
       gpt?<> <MainContainer/> 
       <SecondaryContainer/></> :<GptSearch/>
     }
     
-    </div>;
+    </div>: <Shimmer/>
 };
 
 export default Browse;

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { IMG_CDN_URL } from '../utils/constants'
+import { Link } from 'react-router-dom'
 const MovieList = ({title,moviesList}) => {
 
 console.log(moviesList)
@@ -12,7 +13,7 @@ console.log(moviesList)
         {
          moviesList&&moviesList.map(movie => (
             
-          movie.poster_path ?<div key={movie.id} className='w-[7rem] m-3'> <img src={IMG_CDN_URL+movie.poster_path} alt={movie.title} />  </div>:""
+          movie.poster_path ?<div key={movie.id} className='w-[7rem] bg-zinc-800  m-2'> <Link to={`/${movie.id}`}> <img src={IMG_CDN_URL+movie.poster_path} alt={movie.title} /></Link>   </div>:""
            
          
           ))

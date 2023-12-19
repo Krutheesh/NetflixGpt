@@ -17,7 +17,7 @@ const Header = () => {
   const gpt = useSelector((store) => store.gpt.showGptSearch)
   
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       console.log(user)
       if (user) {
         // User is signed in, see docs for a list of available properties
@@ -32,21 +32,27 @@ const Header = () => {
             photoURL,
           })
         );
+      
         navigate("/browse");
         // ...
       } else {
         // User is signed out
+       
         dispatch(removeUser());
+
         navigate("/");
         // ...
       }
     });
+
+    return () => unsubscribe() ;
   }, []);
 
   const signOutHandler = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+       
         
       })
       .catch((error) => {
@@ -55,24 +61,24 @@ const Header = () => {
       });
   };
   return (
-    <div className="z-10 w-full bg-gradient-to-b from-black absolute flex flex-col md:flex-row justify-between  items-center">
+    <div className="z-10 w-full bg-gradient-to-b from-black absolute  flex justify-between  items-center">
       <div className=" p-1 mx-2">
-        <img className="h-[5.5rem]" src={logo} alt="logo" />
+        <img className="h-[4rem] md:h-[5.5rem]" src={logo} alt="logo" />
       </div>
-      
+      <div>
       {user ? (
-        <div className=" p-1 mx-2 flex">
+        <div className=" md:p-1 md:mx-5 flex">
               
-              { gpt ? '': <select className="rounded-sm mx-2  outline-none px-2 bg-gray-600 text-white" name="" id="">
+              {/* { gpt ? '': <select className="rounded-sm mx-3 text-[0.8rem] md:text-[1rem]  outline-none md:px-2 bg-gray-600 text-white" name="" id="">
                   <option value="">Telugu</option>
                   <option value="">Hindi</option>
                   <option value="">English</option>
                 </select>
-              }
+              } */}
                 
      
           
-             <button onClick={() => dispatch(toggleGptSearch())} className="bg-purple-800 rounded-sm font-semibold text-white px-4 py-2">
+             <button onClick={() => dispatch(toggleGptSearch())} className="bg-purple-800 rounded-sm md:mx-5  font-semibold text-white px-2 py-1 text-[0.8rem] md:text-[1rem] md:px-4 md:py-2">
               
                 { gpt ? "GPT Search ":"Homepage"}
               
@@ -80,11 +86,11 @@ const Header = () => {
 
             
          
-          <p>{user.displayName}</p>
-          <img className="h-10" src={user.photoURL} alt="photo" />
+          {/* <p>{user.displayName}</p> */}
+          {/* <img className="h-10" src={user.photoURL} alt="photo" /> */}
           <button
             onClick={signOutHandler}
-            className="bg-red-600 p-2 rounded-sm text-white font-semibold "
+            className="bg-red-600 rounded-sm md:mx-5 mx-3 text-white font-semibold text-[0.8rem] md:text-[1rem] md:px-4 md:py-2 px-2 py-2 "
           >
             Sign Out
           </button>
@@ -92,6 +98,8 @@ const Header = () => {
       ) : (
         ""
       )}
+      </div>
+     
     </div>
   );
 };

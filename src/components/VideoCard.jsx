@@ -3,7 +3,10 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { addMovieTrailer } from '../utils/movieSlice'
 import { API_OPTIONS } from '../utils/constants'
-const VideoCard = ({movieId,hai}) => {
+import Shimmer from './Shimmer'
+import ShimmerHeader from './ShimmerHeader'
+
+const VideoCard = ({movieId}) => {
  
   const dispatch = useDispatch()
   const movieTrailer = useSelector(store => store.movie?.movieTrailer)
@@ -26,15 +29,15 @@ const VideoCard = ({movieId,hai}) => {
 
   }
   useEffect(()=> {
-    !movieTrailer&&movieInfoById()
-  },[])
+    movieInfoById()
+  },[movieId])
   // if(!movieTrailer) return
 
   // console.log(movieTrailer.key)
   return (
-    <div className=''>
-      <iframe className="w-full aspect-video" src={"https://www.youtube.com/embed/"+ movieTrailer?.key +"?&autoplay=1&mute=1"} frameBorder="0" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-    </div>
+    movieTrailer?<div className=' '>
+      <iframe className="w-full object-cover   aspect-video md:h-full" src={"https://www.youtube.com/embed/"+ movieTrailer?.key +"?&autoplay=1&mute=1"} frameBorder="0" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+    </div>:<ShimmerHeader/>
   )
 }
 

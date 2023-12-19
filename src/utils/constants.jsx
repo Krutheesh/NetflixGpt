@@ -1,5 +1,4 @@
 
-console.log(import.meta.env.VITE_APP_TMDB_KEY,import.meta.env.VITE_APP_OPENAI_kEY)
 export const API_OPTIONS = {
   method: 'GET',
   headers: {
