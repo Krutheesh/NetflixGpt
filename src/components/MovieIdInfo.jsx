@@ -9,7 +9,11 @@ import { addSimilarMovies } from '../utils/movieSlice'
 import Review from './Review'
 import MovieList from './MovieList'
 import Shimmer from './Shimmer'
-
+import ShimmerHeader from './ShimmerHeader'
+import ListShimmer from './ListShimmer'
+import { Link } from 'react-router-dom'
+import logo from "../assets/logo.png";
+import Footer from './Footer'
 const MovieIdInfo = () => {
   const dispatch = useDispatch()
   const {movieIdInfo,similarMovies} = useSelector(store => store.movie)
@@ -37,9 +41,17 @@ console.log('iam movieidinfo')
   if(!(id&& movieIdInfo )) return null;
  
   return (
-    (similarMovies&&movieIdInfo)?<div>
+    (similarMovies&&movieIdInfo)?<div className='bg-black'>
      
-      
+     <div className="z-10 w-full bg-gradient-to-b from-black absolute  flex justify-between  items-center">
+      <div className=" p-1 mx-2">
+        <img className="h-[4rem] md:h-[5.5rem]" src={logo} alt="logo" />
+      </div>
+      <div>
+        <Link to='/browse' className="bg-red-600 rounded-sm   text-white font-semibold text-[0.8rem] md:text-[1rem] md:px-4 md:py-2 px-3 py-2 mx-10 ">Home</Link>
+      </div>
+     
+    </div>
       <MovieInfo title={movieIdInfo?.original_title} overView={movieIdInfo?.overview}/>
       <VideoCard movieId={id}/>
       <div className='bg-black px-10'>
@@ -47,8 +59,8 @@ console.log('iam movieidinfo')
       
       <Review movieId={id}/>
       </div>
-
-    </div>:<Shimmer/>
+<Footer/>
+    </div>:<><ShimmerHeader/><ListShimmer/></>
   )
 }
 

@@ -4,7 +4,7 @@ import { IMG_CDN_URL } from '../utils/constants'
 import { Link } from 'react-router-dom'
 const MovieList = ({title,moviesList}) => {
 
-console.log(moviesList)
+// console.log(moviesList)
   return (
     <div className='text-white '>
       <h1 className='font-semibold py-2'>{title}</h1>

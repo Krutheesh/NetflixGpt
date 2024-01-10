@@ -29,7 +29,7 @@ const Review = ({movieId}) => {
             <div className='flex items-center space-x-10'> <p className='flex items-center t'> <span className='text-[1.4rem] pr-2 text-gray-400'> <FaRegUserCircle /></span> <span className='font-semibold text-white'>{review?.author_details?.username}</span></p> <span className='text-gray-400 font-semibold'>Rating : <span className='text-white font-bold'> {review?.author_details?.rating}</span> </span></div>
           <ReadMore content={review?.content}/>
           </div>
-      )):<div className='flex justify-center items-center text-[2rem] text-white font-semibold p-5'> No Reviews for this movie </div>
+      )):<div className='flex justify-center items-center text-[2rem] text-white font-semibold  mt-10'> Reviews not found </div>
         
       }
     </div>

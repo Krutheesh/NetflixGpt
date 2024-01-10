@@ -4,12 +4,13 @@ import Forms from './Forms'
 import { Outlet } from 'react-router-dom'
 
 const Body = () => {
+
   return (
-    <div className=''>
+    <>
      
-      <Header/>
+      
      <Forms/>
-    </div>
+    </>
   )
 }
 

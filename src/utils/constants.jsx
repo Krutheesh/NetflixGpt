@@ -6,6 +6,6 @@ export const API_OPTIONS = {
     Authorization: import.meta.env.VITE_APP_TMDB_KEY
   }
 };
-export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500"
+export const IMG_CDN_URL = import.meta.env.VITE_APP_IMG_CDN_URL
 
 export const OPEN_AI_KEY = import.meta.env.VITE_APP_OPENAI_kEY

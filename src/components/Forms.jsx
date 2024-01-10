@@ -13,6 +13,7 @@ import { addUser } from "../utils/userSlice";
 import Header from "./Header";
 import { Ring } from "./Load";
 const Forms = () => {
+  console.log("form")
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -100,6 +101,7 @@ const Forms = () => {
   };
   return (
     <>
+    <Header/>
     
      <div className="relative flex  justify-center ">
       <div className="w-full h-full absolute bg-black opacity-40 "></div>

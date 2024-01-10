@@ -21,7 +21,7 @@ const Header = () => {
       console.log(user)
       if (user) {
         // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
+        // https://firebñññññase.google.com/docs/reference/js/auth.user
         const { uid, email, displayName, photoURL } = user;
         // console.log(uid,email,displayName,photoURL)
         dispatch(
@@ -40,19 +40,21 @@ const Header = () => {
        
         dispatch(removeUser());
 
-        navigate("/");
+        navigate('/');
+      
         // ...
       }
-    });
+});
 
     return () => unsubscribe() ;
+
   }, []);
 
   const signOutHandler = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-       
+       navigate(0)
         
       })
       .catch((error) => {

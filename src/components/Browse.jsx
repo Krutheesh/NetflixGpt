@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { API_OPTIONS } from "../utils/constants";
-import { addNowPlayingMovies,addPopularMovies,addTrendingMovies } from "../utils/movieSlice";
 import { useDispatch } from "react-redux";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
@@ -9,46 +7,26 @@ import { toggleGptSearch } from "../utils/gptSlice";
 import { useSelector } from "react-redux";
 import GptSearch from "./GptSearch";
 import Shimmer from "./Shimmer";
+import Footer from "./Footer";
+import useNowPlaying from "../hooks/useNowPlaying";
+import usePopularMovies from "../hooks/usePopularMovies";
+import useTrendingMovies from "../hooks/useTrendingMovies";
 const Browse = () => {
   const dispatch = useDispatch()
+  const user = useSelector((store) => store.user);
   const gpt = useSelector(store => store.gpt.showGptSearch)
   const {nowPlayingMovies,TrendingMovies,PopularMovies} = useSelector(store => store.movie)
-  const getNowPlayingMovies = async () => {
-    try {
-      const data = await fetch(
-        "https://api.themoviedb.org/3/movie/now_playing?language=tel-IN&page=1",
-        API_OPTIONS
-       
-      );
-      const json = await data.json();
-      dispatch(addNowPlayingMovies(json.results))
-      const trendingData = await fetch(
-        "https://api.themoviedb.org/3/trending/movie/day?language=tel-IN&page=1",
-        API_OPTIONS
-      )
-      const trendingJson = await trendingData.json()
-      
-      // console.log(json.results);
-      dispatch(addTrendingMovies(trendingJson.results))
-       const popularData = await fetch(
-        "https://api.themoviedb.org/3/tv/popular?language=tel-IN&page=1",
-        API_OPTIONS
-       )
-       const popularJson = await popularData.json()
-      dispatch(addPopularMovies(popularJson.results))
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+  useNowPlaying();
+  usePopularMovies();
+  useTrendingMovies();
+  
 
-  useEffect(() => {
-   !(nowPlayingMovies&&TrendingMovies&&PopularMovies) &&getNowPlayingMovies();
-  }, []);
+  
   return  PopularMovies? <div>
     <Header/>
     {
-      gpt?<> <MainContainer/> 
-      <SecondaryContainer/></> :<GptSearch/>
+      gpt?<div className="bg-black"> <MainContainer/> 
+      <SecondaryContainer/><Footer/></div> :<GptSearch/>
     }
     
     </div>: <Shimmer/>

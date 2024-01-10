@@ -3,7 +3,8 @@ import openai from "../utils/openai";
 import { useRef } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import { useDispatch } from "react-redux";
-import { addGptMovieResults } from "../utils/gptSlice";
+import { addGptMovieResults, setIsLoading } from "../utils/gptSlice";
+import Shimmer from "./Shimmer";
 const GptSearchBar = () => {
   const dispatch = useDispatch()
   const prompt = useRef(null);
@@ -19,6 +20,7 @@ const GptSearchBar = () => {
    return json.results
   }
   const handleGptSearch = async () => {
+    dispatch(setIsLoading(true))
     try {
       console.log(prompt.current.value);
       const gptQuery =
@@ -44,7 +46,7 @@ const GptSearchBar = () => {
     } catch (err) {
       console.log(err);
     }
-    
+    dispatch(setIsLoading(false))
   };
 
   return (
