@@ -29,8 +29,9 @@
 - Added .env file
 - Adding .env file to gitignore
 - Made our Site Responsive
+
 # Features
-- Login/Sign Up
+- Login/Sign Up (Firebase authentication)
   - Sign In /Sign up Form
   - redirect to Browse Page
 - Browse (after authentication)
