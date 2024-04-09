@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { API_OPTIONS } from "../utils/constants";
-import { addTrendingMovies } from "../utils/movieSlice";
+import { addTrendingMovies, errorFunction } from "../utils/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
 const useTrendingMovies = () => {
   const {TrendingMovies} = useSelector(store => store.movie)
@@ -12,11 +12,13 @@ const useTrendingMovies = () => {
         API_OPTIONS
       )
       const trendingJson = await trendingData.json()
-      
+      console.log(trendingJson)
       // console.log(json.results);
       dispatch(addTrendingMovies(trendingJson.results))
     } catch (error) {
-      console.log(err.message);
+      console.log(error)
+      console.log(error.message);
+      dispatch(errorFunction(error.message))
     }
   }
   useEffect(()=> {

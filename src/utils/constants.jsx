@@ -4,7 +4,8 @@ export const API_OPTIONS = {
   headers: {
     accept: 'application/json',
     Authorization: import.meta.env.VITE_APP_TMDB_KEY
-  }
+  },
+  timeout: 50
 };
 export const IMG_CDN_URL = import.meta.env.VITE_APP_IMG_CDN_URL
 
