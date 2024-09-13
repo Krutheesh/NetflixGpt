@@ -105,14 +105,14 @@ const Forms = () => {
     
      <div className="relative flex  justify-center ">
       <div className="w-full h-full absolute bg-black opacity-40 "></div>
-      <div className=" w-full bg-cover ">
-        <img className=" h-[100vh] md:h-full  " src={netflixbg} alt="bg-logo" />
+      <div className=" h-[100vh]  w-full  "  >
+        <img className=" h-[100vh] w-full object-cover "  src={netflixbg} alt="bg-logo" />
       </div>
-      <div className="absolute top-[6rem] ">
+      <div className="absolute top-[10rem] md:top-[7rem] ">
         <form
           onSubmit={formHandler}
           action=""
-          className=" rounded-md w-[25rem] p-10 flex flex-col justify-center text-white  bg-black bg-opacity-80 "
+          className=" rounded-md md:w-[25rem] w-[90vw]  p-5 flex flex-col justify-center text-white  bg-black bg-opacity-80 "
         >
           <h2 className="font-semibold text-[2rem] p-2 py-4 m-2 text-white">
             {isSignInForm ? "Sign In" : "Sign Up"}
@@ -132,7 +132,7 @@ const Forms = () => {
             ref={email}
             type="email"
             className=" p-2 m-2 bg-gray-700 outline-none rounded-md"
-            placeholder="Enter Email or Phone number"
+            placeholder="Enter Email"
             required
           />
           <input
