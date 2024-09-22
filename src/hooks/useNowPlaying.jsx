@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import { addNowPlayingMovies,errorFunction } from "../utils/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+// tmdb api is not working in india 
 const useNowPlaying = () => {
   const dispatch = useDispatch();
   const { nowPlayingMovies } = useSelector((store) => store.movie);

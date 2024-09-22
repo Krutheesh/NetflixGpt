@@ -108,11 +108,11 @@ const Forms = () => {
       <div className=" h-[100vh]  w-full  "  >
         <img className=" h-[100vh] w-full object-cover "  src={netflixbg} alt="bg-logo" />
       </div>
-      <div className="absolute top-[10rem] md:top-[7rem] ">
+      <div className="absolute top-[10rem] md:top-[5rem] ">
         <form
           onSubmit={formHandler}
           action=""
-          className=" rounded-md md:w-[25rem] w-[90vw]  p-5 flex flex-col justify-center text-white  bg-black bg-opacity-80 "
+          className=" rounded-md md:w-[25rem] w-[90vw]  p-5 md:p-10 flex flex-col justify-center text-white  bg-black bg-opacity-80 "
         >
           <h2 className="font-semibold text-[2rem] p-2 py-4 m-2 text-white">
             {isSignInForm ? "Sign In" : "Sign Up"}
